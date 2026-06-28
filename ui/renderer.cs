@@ -5,7 +5,9 @@ namespace TaskManager;
 public class Renderer
 {
     public void Render(List<TaskItem> tasks)
-    {
+
+    {   
+        Console.Clear();
         Console.WriteLine(" Task Manager V1.0 ");
         Console.WriteLine("---------------------------------------");
 

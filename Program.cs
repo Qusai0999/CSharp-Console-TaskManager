@@ -1,4 +1,5 @@
 ﻿using System;
+using TaskManager.services;
 
 namespace TaskManager
 {
@@ -6,19 +7,39 @@ namespace TaskManager
     {
         public static void Main()
         {
-            var taskslist = new List<TaskItem>
-            {
-                new TaskItem(1,"one"),
-                new TaskItem(2,"two"),
-                new TaskItem(3,"three")
-            };
+
             var engine = new Renderer();
 
-            engine.Render(taskslist);
+            var taskservice = new TaskService();
+            taskservice.AddTask("one");
+
+            taskservice.AddTask("two");
+            taskservice.AddTask("three");
+            taskservice.AddTask("four");
+            // Console.WriteLine(taskservice.TasksList.Count);
+
+            engine.Render(taskservice.TasksList);
+            Console.WriteLine(taskservice.GetAllTasks().Count);
+            Console.ReadKey();
+
+            taskservice.ToggleTask(0);
+            taskservice.ToggleTask(1); 
+
+            engine.Render(taskservice.TasksList);
+            Console.WriteLine(taskservice.GetCompletedTasks().Count);
+            Console.WriteLine(taskservice.GetPendingTasks().Count);
+            Console.ReadKey();
 
 
+            engine.Render(taskservice.TasksList);
+            Console.WriteLine(taskservice.GetTask(1).Title);
+            Console.WriteLine(taskservice.GetTask(2).Title);
+            Console.ReadKey();
 
+            taskservice.DeleteTask(3);
+            taskservice.DeleteTask(2);
 
+            engine.Render(taskservice.TasksList);
             Console.ReadKey();
         }
     }
