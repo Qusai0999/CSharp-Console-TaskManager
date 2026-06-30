@@ -3,6 +3,7 @@ using System;
 namespace TaskManager.services
 {
     public class TaskService
+    /* Responsible of Creating and Managing Tasks  */
     {
         private List<TaskItem> _tasks ;
 
@@ -26,18 +27,20 @@ namespace TaskManager.services
 
         public void DeleteTask(int id)
         {
-            if (_tasks[id] != null)
+            var task = _tasks.FirstOrDefault(t => t.Id == id);
+            if (task != null)
             {
-                _tasks.RemoveAt(id);
+                _tasks.Remove(task);
             }
         }
 
         public void ToggleTask(int id)
         {
-            if (_tasks[id] != null)
+            var task = _tasks.FirstOrDefault(t => t.Id == id);
+            if (task != null)
             {
-                _tasks[id].IsDone = !_tasks[id].IsDone ;
-            }
+                task.IsDone = !task.IsDone ;
+            } 
             
         }
 
