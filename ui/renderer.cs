@@ -5,7 +5,7 @@ namespace TaskManager;
 
 public class Renderer
 {
-    public void Render(List<TaskItem> tasks)
+    public void Render(List<TaskItem> tasks, string msg)
 
     {   
         Console.Clear();
@@ -28,5 +28,16 @@ public class Renderer
         }
 
         Console.WriteLine("---------------------------------------");
+        Console.WriteLine("Commands :");
+        Console.WriteLine("  add <title> ");
+        Console.WriteLine("  toggle <id> ");
+        Console.WriteLine("  delete <id> ");
+        Console.WriteLine("  all");
+        Console.WriteLine("  pending ");
+        Console.WriteLine("  completed ");
+        Console.WriteLine(msg);
+
+        
+
     }
 }

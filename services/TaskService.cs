@@ -25,23 +25,26 @@ namespace TaskManager.services
 
         }
 
-        public void DeleteTask(int id)
+        public int DeleteTask(int id)
         {
             var task = _tasks.FirstOrDefault(t => t.Id == id);
             if (task != null)
             {
                 _tasks.Remove(task);
+                return 0;
             }
+            return -1;
         }
 
-        public void ToggleTask(int id)
+        public int ToggleTask(int id)
         {
             var task = _tasks.FirstOrDefault(t => t.Id == id);
             if (task != null)
             {
                 task.IsDone = !task.IsDone ;
-            } 
-            
+                return 0;
+            }
+            return -1;
         }
 
         public TaskItem GetTask(int id)
