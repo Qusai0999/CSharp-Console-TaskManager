@@ -41,7 +41,7 @@ namespace TaskManager
                             if (string.IsNullOrEmpty(payload)){return;}
                             try
                             {
-                                int id = Convert.ToInt32(payload);
+                                int id = Convert.ToInt32(payload) - 1;
                                 if (taskservice.DeleteTask(id) == -1)
                                 {
                                     System.Console.WriteLine($"No Task With ID {id} Found !");
@@ -66,7 +66,7 @@ namespace TaskManager
                             if (string.IsNullOrEmpty(payload)){return;}
                             try
                             {
-                                int id = Convert.ToInt32(payload);
+                                int id = Convert.ToInt32(payload) - 1;
                                 Console.WriteLine(id);
                                 if (taskservice.ToggleTask(id) == -1)
                                 {
@@ -93,7 +93,7 @@ namespace TaskManager
                             
                         break;
                     }
-                    case "pendding": {
+                    case "pending": {
                         
                         Console.Clear();
                         engine.Render( taskservice.GetPendingTasks() ,msg);

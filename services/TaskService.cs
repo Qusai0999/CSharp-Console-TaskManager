@@ -27,7 +27,7 @@ namespace TaskManager.services
 
         public int DeleteTask(int id)
         {
-            var task = _tasks.FirstOrDefault(t => t.Id == id);
+            var task = _tasks.ElementAtOrDefault(id);
             if (task != null)
             {
                 _tasks.Remove(task);
@@ -38,7 +38,7 @@ namespace TaskManager.services
 
         public int ToggleTask(int id)
         {
-            var task = _tasks.FirstOrDefault(t => t.Id == id);
+            var task = _tasks.ElementAtOrDefault(id);
             if (task != null)
             {
                 task.IsDone = !task.IsDone ;

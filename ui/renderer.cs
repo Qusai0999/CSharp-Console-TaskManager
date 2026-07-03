@@ -12,9 +12,11 @@ public class Renderer
         Console.WriteLine(" Task Manager V1.0 ");
         Console.WriteLine("---------------------------------------");
 
+        var counter = 0;
+
         foreach (var task in tasks)
         {
-            var id = task.Id;
+            var id = counter + 1;
             var title = task.Title;
             var isdone = task.IsDone;
 
@@ -24,7 +26,9 @@ public class Renderer
                 mark = "o" ;
             }  
 
-            Console.WriteLine($" {id} | {mark} | {title}");     
+            Console.WriteLine($" {id} | {mark} | {title}");    
+
+            counter++ ; 
         }
 
         Console.WriteLine("---------------------------------------");
